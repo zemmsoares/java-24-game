@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import java.awt.print.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -124,10 +125,17 @@ public class Teste extends JFrame implements ActionListener {
 }
 
 class PrintPanel extends JPanel implements Printable {
+	 private BufferedImage image;
   public PrintPanel() {
     setPreferredSize(new Dimension(535, 700));
     setBackground(Color.white);
-    //addMouseListener(this);
+    //addMouseListener(this);.
+    URL url = getClass().getClassLoader().getResource("images/earth.jpg");
+    try {
+      image = ImageIO.read(url);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
   }
   
   public int print(Graphics g, PageFormat pf, int pageIndex) {
