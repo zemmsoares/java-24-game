@@ -11,13 +11,7 @@ public class ClickListener implements ActionListener
 	
 	public static void tester(String teste)
 	{
-		System.out.println(teste);
-		if(teste=="erro") {
-			falsos++;
-			
-		}else {
-			verdades++;
-		}
+
 	}
 	
 
