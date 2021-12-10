@@ -12,16 +12,18 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Enumeration;
 
-class Product{  
+class Puzzle{  
+	int game_id;
 	int n1;  
 	int n2;  
 	int n3;  
-	int n4;  
+	int n4;
 	Boolean pro_name;  
 	int difficulty;
 	//Product class constructor  
-	Product(int n1,int n2,int n3,int n4, boolean n, int d) 
+	Puzzle(int game_id,int n1,int n2,int n3,int n4, boolean n, int d) 
 		{  
+			this.game_id = game_id;
 			this.n1 = n1;
 			this.n2 = n2;
 			this.n3 = n3;
