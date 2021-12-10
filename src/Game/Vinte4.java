@@ -11,6 +11,7 @@ import java.awt.print.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class Vinte4 extends JFrame implements ActionListener {
 	public static int totalRespondidas = 0;
 	public static int totalCertas = 0;
 	public static int randNum = 0;
-	public static int[] nums = { 0, 1, 2 };
+	public static int[] nums = IntStream.range(1, 38).toArray();
 	public static int rotationAngle = 0;
 	public static boolean AnimationState = false;
 	public static int squareNextPadding = 20;
@@ -272,10 +273,50 @@ class PrintPanel extends JPanel implements Printable, ActionListener {
 	}
 
 	public static Puzzle arrayObjectos(int randNum) {
-		Puzzle[] obj = new Puzzle[5];
-		obj[0] = new Puzzle(001, 1, 2, 3, 4, true, 1);
-		obj[1] = new Puzzle(002, 2, 3, 4, 5, false, 2);
-		obj[2] = new Puzzle(003, 5, 1, 9, 8, true, 3);
+		// puzzle id, n1,n2,n3,n4 solution, difficulty
+		Puzzle[] obj = new Puzzle[50];
+		obj[0] = new Puzzle(0, 6, 9, 1, 2, true, 1);
+		obj[1] = new Puzzle(1, 4, 2, 8, 8, true, 1);
+		obj[2] = new Puzzle(2, 1, 8, 4, 1, true, 1);
+		obj[3] = new Puzzle(3, 1, 9, 1, 5, true, 1);
+		obj[4] = new Puzzle(4, 3, 4, 5, 5, true, 1);
+		obj[5] = new Puzzle(5, 4, 8, 8, 4, true, 1);
+		obj[6] = new Puzzle(6, 6, 8, 4, 6, true, 1);
+		obj[7] = new Puzzle(7, 2, 4, 6, 7, true, 2);
+		obj[8] = new Puzzle(8, 8, 5, 6, 2, true, 2);
+		obj[9] = new Puzzle(9, 1, 3, 4, 7, true, 2);
+		obj[10] = new Puzzle(10, 6, 8, 6, 5, true, 2);
+		obj[11] = new Puzzle(11, 2, 7, 2, 8, true, 2);
+		obj[12] = new Puzzle(12, 2, 4, 7, 3, true, 2);
+		obj[13] = new Puzzle(13, 3, 3, 1, 7, true, 2);
+		obj[14] = new Puzzle(14, 4, 8, 8, 7, true, 2);
+		obj[15] = new Puzzle(15, 7, 5, 4, 1, true, 2);
+		obj[16] = new Puzzle(16, 6, 5, 8, 7, true, 2);
+		obj[17] = new Puzzle(17, 6, 9, 3, 1, true, 2);
+		obj[18] = new Puzzle(18, 7, 4, 8, 4, true, 3);
+		obj[19] = new Puzzle(19, 5, 2, 8, 2, true, 3);
+		obj[20] = new Puzzle(20, 4, 2, 8, 8, true, 3);
+		obj[21] = new Puzzle(21, 2, 2, 3, 5, true, 3);
+		obj[22] = new Puzzle(22, 3, 8, 8, 1, true, 3);
+		obj[23] = new Puzzle(23, 3, 2, 5, 7, true, 3);
+		obj[24] = new Puzzle(24, 8, 5, 5, 2, true, 3);
+		obj[25] = new Puzzle(25, 3, 3, 6, 8, true, 3);
+		obj[26] = new Puzzle(26, 7, 5, 3, 3, true, 3);
+		
+		obj[27] = new Puzzle(15, 1, 1, 1, 1, false, 1);
+		obj[28] = new Puzzle(16, 1, 2, 3, 4, false, 2);
+		obj[29] = new Puzzle(17, 2, 1, 1, 1, false, 2);
+		obj[30] = new Puzzle(18, 1, 1, 2, 3, false, 2);
+		obj[31] = new Puzzle(19, 5, 2, 1, 2, false, 2);
+		obj[32] = new Puzzle(20, 8, 1, 1, 1, false, 2);
+		obj[33] = new Puzzle(21, 3, 1, 2, 3, false, 2);
+		obj[34] = new Puzzle(22, 1, 7, 8, 1, false, 3);
+		obj[35] = new Puzzle(23, 1, 4, 9, 4, false, 3);
+		obj[36] = new Puzzle(24, 2, 7, 1, 2, false, 3);
+		obj[37] = new Puzzle(25, 1, 8, 4, 1, false, 3);
+		obj[38] = new Puzzle(26, 7, 4, 3, 1, false, 3);
+		
+		//obj[2] = new Puzzle(1, 5, 1, 9, 8, true, 3);
 		return obj[randNum];
 	}
 	static BufferedImage a;
