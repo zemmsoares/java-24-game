@@ -37,7 +37,7 @@ import javax.imageio.ImageIO;
 import java.awt.geom.*;
 
 
-class SplashPanel extends JPanel {
+class HelpPanel extends JPanel {
 	public static float degrees = 0.0f;
 
 
@@ -58,7 +58,7 @@ class SplashPanel extends JPanel {
 
 	}
 
-	public SplashPanel() {
+	public HelpPanel() {
 		setPreferredSize(new Dimension(600, 600));
 		setBackground(Color.WHITE);    
 		

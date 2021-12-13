@@ -31,11 +31,6 @@ class Puzzle{
 			pro_name = n;
 			this.difficulty = d;
 		}  
-	public void display() 
-	{  
-		System.out.print("n1 = "+n1+"  " +"n2 = "+n2+"  " +"n3 = "+n3+"  " +"n4 = "+n4+"  " + " true? = "+pro_name);  
-		System.out.println();  
-	}  
 	
 }  
 

@@ -18,10 +18,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Vinte4 extends JFrame implements ActionListener, Runnable {
-	static JFrame splashFrame;
-	public static void main(String[] args) {	
+	static JFrame helpFrame;
+
+	public static void main(String[] args) {
 		// Create the application main frame as usual
-		
+
 		JFrame frame = new Vinte4();
 		frame.setTitle("Vinte 4");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,26 +31,23 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
-	@SuppressWarnings("static-access")
+
 	public void createApplicationFrame() {
-		
-		splashFrame = new JFrame();
-		//splashFrame.setUndecorated(true); // Turn off title bar and borders
-		splashFrame.setLayout(new BorderLayout()); // Configure a border layout to ass a panel and a button
-		JPanel panel = new SplashPanel(); // Create the panel of the splash screen and add it to the center of the
-		splashFrame.add(panel, BorderLayout.CENTER);
-		//JButton btn = new JButton("OK"); // Create a button and add it to the south of the border layout
-	    //splashFrame.add(btn, BorderLayout.SOUTH);
-/*
 
-		btn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//splashFrame.dispose();
-			}
-		});
-*/
+		helpFrame = new JFrame();
+		helpFrame.setLayout(new BorderLayout()); // Configure a border layout to ass a panel and a button
+		JPanel panel = new HelpPanel(); // Create the panel of the splash screen and add it to the center of the
+		helpFrame.add(panel, BorderLayout.CENTER);
+		// JButton btn = new JButton("OK"); // Create a button and add it to the south
+		// of the border layout
+		// helpFrame.add(btn, BorderLayout.SOUTH);
+		/*
+		 * 
+		 * btn.addActionListener(new ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) {
+		 * //helpFrame.dispose(); } });
+		 */
 		// Add a mouse listener to the frame itself. When the user clicks the frame, the
 		// splash screen frame is disposed
 		// and the application main frame is created
@@ -61,7 +59,7 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				//splashFrame.dispose();
+				// helpFrame.dispose();
 			}
 
 			@Override
@@ -76,14 +74,12 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		//splashFrame.setDefaultCloseOperation(splashFrame.EXIT_ON_CLOSE);
-		splashFrame.pack();
-		splashFrame.setLocationRelativeTo(null); // Set location to the center of screen
-		splashFrame.setVisible(true); // Set visibility
-
+		// helpFrame.setDefaultCloseOperation(helpFrame.EXIT_ON_CLOSE);
+		helpFrame.pack();
+		helpFrame.setLocationRelativeTo(null); // Set location to the center of screen
+		helpFrame.setVisible(true); // Set visibility
 
 	}
-
 
 	PrinterJob pj;
 	PrintPanel painter;
@@ -110,8 +106,8 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 				ex.printStackTrace();
 			}
 		} else if ("NO24".equals(cmd)) {
-		    Thread thread = new Thread(this);
-		    thread.start();
+			Thread thread = new Thread(this);
+			thread.start();
 			System.out.println("LEFT BUTTON PRESSED");
 			System.out.println("is24: " + is24);
 			randNum = getRandomElement(nums);
@@ -148,8 +144,8 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 			}
 			repaint();
 		} else if ("24".equals(cmd)) {
-		    Thread thread = new Thread(this);
-		    thread.start();
+			Thread thread = new Thread(this);
+			thread.start();
 			System.out.println("RIGHT BUTTON PRESSED");
 			System.out.println("is24: " + is24);
 			randNum = getRandomElement(nums);
@@ -187,8 +183,8 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 			repaint();
 		} else if ("Start Animation".equals(cmd)) {
 			AnimationState = true;
-		    Thread thread = new Thread(this);
-		    thread.start();
+			Thread thread = new Thread(this);
+			thread.start();
 		} else if ("Reset Score".equals(cmd)) {
 			totalRespondidas = 0;
 			totalCertas = 0;
@@ -201,25 +197,27 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 		} else if ("How to play".equals(cmd)) {
 			createApplicationFrame();
 			/*
-			PrintPanel.infoBox("Object of the game:" + "\n" + "Make the number 24 from the four numbers shown." + "\n"
-					+ "You can add, subtract, multiply and divide. Use all four numbers on" + "\n"
-					+ "the card, but use each number only once. You do not have to use all" + "\n"
-					+ "four operations. Can you solve the card below?", "How to play");
-			*/
+			 * PrintPanel.infoBox("Object of the game:" + "\n" +
+			 * "Make the number 24 from the four numbers shown." + "\n" +
+			 * "You can add, subtract, multiply and divide. Use all four numbers on" + "\n"
+			 * + "the card, but use each number only once. You do not have to use all" +
+			 * "\n" + "four operations. Can you solve the card below?", "How to play");
+			 */
 		}
 	}
-	
-	  public void run() {
-		    while(degrees < 1.6) {
-		      degrees = degrees+ 0.1f;
-		      repaint();
-		      System.out.println(degrees);
-		      try {
-		        Thread.sleep(20);
-		      } catch (InterruptedException ex) {}
-		    }
-		    degrees = 0;
-		  }  
+
+	public void run() {
+		while (degrees < 1.6) {
+			degrees = degrees + 0.1f;
+			repaint();
+			System.out.println(degrees);
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException ex) {
+			}
+		}
+		degrees = 0;
+	}
 
 	private int getRandomElement(int[] arr) {
 		return arr[ThreadLocalRandom.current().nextInt(arr.length)];
@@ -280,8 +278,7 @@ public class Vinte4 extends JFrame implements ActionListener, Runnable {
 	}
 }
 
-
-class PrintPanel extends JPanel implements Printable, ActionListener  {
+class PrintPanel extends JPanel implements Printable, ActionListener {
 	private BufferedImage image;
 	public static BufferedImage image2;
 
@@ -385,57 +382,70 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 		obj[36] = new Puzzle(24, 2, 7, 1, 2, false, 3);
 		obj[37] = new Puzzle(25, 1, 8, 4, 1, false, 3);
 		obj[38] = new Puzzle(26, 7, 4, 3, 1, false, 3);
-		
-		//obj[2] = new Puzzle(1, 5, 1, 9, 8, true, 3);
+
+		// obj[2] = new Puzzle(1, 5, 1, 9, 8, true, 3);
 		return obj[randNum];
 	}
+
 	static BufferedImage a;
+
 	public static void process() {
 		BufferedImageOp op = null;
 		op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
 		BufferedImage bi = op.filter(image2, null);
 		a = bi;
 	}
-	
+
 	private void draw(Graphics g) {
-		int mleft = 10;
-		int mtop = 50;
+		int marginLeft = 10;
+		int marginTop = 50;
+
+		int GameAreaHeight = 500;
+		int GameAreaWidth = 500;
+
+		BufferedImageOp op = null;
+		op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
+		BufferedImage bi = op.filter(image2, null);
+		a = bi;
 		
-		int tamanhoRect = 500;
-		
-		// Cores
+		if (a == null) {
+			g.drawImage(image2, 10, 560, null);
+		} else {
+			g.drawImage(PrintPanel.a, 10, 560, null);
+		}
+
+		// Colors
 		Color azulBg = new Color(03, 19, 108);
 		Color amareloBg = new Color(247, 171, 36);
 		Color amareloBgDarker = new Color(207, 149, 43);
 		Color crossBg = new Color(226, 41, 61);
 
-		// Rectangle
-		var r = new RoundRectangle2D.Double(mleft, mtop, 500, 500, 50, 50);
+		// Blue Rectangle Background
+		var r = new RoundRectangle2D.Double(marginLeft, marginTop, GameAreaWidth, GameAreaHeight, 50, 50);
 		g.setColor(azulBg);
 		((Graphics2D) g).fill(r);
 
-		// Composition
+		// Blue Rectangle Background Texture & Transparency
 		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.1f);
 		((Graphics2D) g).setComposite(ac);
-
-		TexturePaint tp = new TexturePaint(image, new Rectangle2D.Double(100, 100, image.getWidth(), image.getHeight()));
+		TexturePaint tp = new TexturePaint(image,
+				new Rectangle2D.Double(100, 100, image.getWidth(), image.getHeight()));
 		((Graphics2D) g).setPaint(tp);
-		var rtransparency = new RoundRectangle2D.Double(mleft, mtop, 500, 500, 50,50);
+		var rtransparency = new RoundRectangle2D.Double(marginLeft, marginTop, 500, 500, 50, 50);
 		((Graphics2D) g).fill(rtransparency);
-
 		AlphaComposite ac2 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f);
 		((Graphics2D) g).setComposite(ac2);
 
-		// Circle
-		var circle = new Ellipse2D.Double(mleft + 20, mtop + 20, 460, 460);
-		GradientPaint gp = new GradientPaint(0,250,amareloBg, 150, 50, amareloBgDarker, true);
+		// Yellow Circle
+		var circle = new Ellipse2D.Double(marginLeft + 20, marginTop + 20, 460, 460);
+		GradientPaint gp = new GradientPaint(0, 250, amareloBg, 150, 50, amareloBgDarker, true);
 		((Graphics2D) g).setPaint(gp);
 		((Graphics2D) g).fill(circle);
 
-		
+		// Red cross
 		AffineTransform backup = ((Graphics2D) g).getTransform();
-		AffineTransform a = AffineTransform.getRotateInstance(Vinte4.degrees, (mleft + 225) + 25,
-				mtop + 225 + 45);
+		AffineTransform a = AffineTransform.getRotateInstance(Vinte4.degrees, (marginLeft + 225) + 25,
+				marginTop + 225 + 45);
 		((Graphics2D) g).setTransform(a);
 		CustomShape vv = new CustomShape(0, 20, 500, 500);
 		g.setColor(crossBg);
@@ -443,8 +453,7 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 		((Graphics2D) g).fill(vv);
 		((Graphics2D) g).setTransform(backup);
 
-
-		//
+		// Radial Linnes / Primitives / clipping
 		g.setColor(Color.GRAY);
 		double startAngle = 0;
 		double divisions = 100;
@@ -465,122 +474,124 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 
 		g.setClip(null);
 		g.setColor(crossBg);
-		g.fillRect(mleft + 190, mtop + 190, 120, 120);
+		g.fillRect(marginLeft + 190, marginTop + 190, 120, 120);
 
+		// Inner Circle
 		g.setColor(Color.WHITE);
 		GeneralPath path = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
-		path.moveTo(mleft + 200, mtop + 200);
-		path.lineTo(mleft + 300, mtop + 200);
-		path.lineTo(mleft + 300, mtop + 300);
-		path.lineTo(mleft + 200, mtop + 300);
-		path.lineTo(mleft + 200, mtop + 200);
+		path.moveTo(marginLeft + 200, marginTop + 200);
+		path.lineTo(marginLeft + 300, marginTop + 200);
+		path.lineTo(marginLeft + 300, marginTop + 300);
+		path.lineTo(marginLeft + 200, marginTop + 300);
+		path.lineTo(marginLeft + 200, marginTop + 200);
 
 		Stroke stroke = new BasicStroke(1.5f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
 		((Graphics2D) g).setStroke(stroke);
 		((Graphics2D) g).draw(path);
 
+		// Game difficulty shapes
 		if (arrayObjectos(Vinte4.randNum).difficulty == 1) {
 			g.setColor(Color.WHITE);
-			Shape difficulty = new Ellipse2D.Double(mleft + 20, mtop + 20, 15, 15);
+			Shape difficulty = new Ellipse2D.Double(marginLeft + 20, marginTop + 20, 15, 15);
 			((Graphics2D) g).fill(difficulty);
-	
-		    AffineTransform transform = new AffineTransform();
-	
-		    transform.setToTranslation(0,440);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(440,0);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(0,-440);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
 
-			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+			AffineTransform transform = new AffineTransform();
+
+			transform.setToTranslation(0, 440);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(440, 0);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(0, -440);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+
+			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			Font font = new Font("Calibri", Font.PLAIN, 14);
 			g.setFont(font);
 			g.setColor(Color.BLACK);
 			g.drawOval(485, 15, 15, 15);
 			g.drawString("Difficulty", 425, 27);
-			
+
 		} else if (arrayObjectos(Vinte4.randNum).difficulty == 2) {
 			g.setColor(Color.WHITE);
-			Shape difficulty = new Ellipse2D.Double(mleft + 20, mtop + 20, 15, 15);
+			Shape difficulty = new Ellipse2D.Double(marginLeft + 20, marginTop + 20, 15, 15);
 			((Graphics2D) g).fill(difficulty);
-	
-		    AffineTransform transform = new AffineTransform();
-	
-		    transform.setToTranslation(0,20);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(0,420);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(20,0);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(420,0);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(0,-20);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(0,-420);
-		    difficulty = transform.createTransformedShape(difficulty);
-		    ((Graphics2D) g).fill(difficulty);
-		    transform.setToTranslation(-20,0);
-		    difficulty = transform.createTransformedShape(difficulty);//
-		    ((Graphics2D) g).fill(difficulty);
 
-			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+			AffineTransform transform = new AffineTransform();
+
+			transform.setToTranslation(0, 20);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(0, 420);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(20, 0);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(420, 0);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(0, -20);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(0, -420);
+			difficulty = transform.createTransformedShape(difficulty);
+			((Graphics2D) g).fill(difficulty);
+			transform.setToTranslation(-20, 0);
+			difficulty = transform.createTransformedShape(difficulty);//
+			((Graphics2D) g).fill(difficulty);
+
+			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			Font font = new Font("Calibri", Font.PLAIN, 14);
 			g.setFont(font);
 			g.setColor(Color.BLACK);
 			g.drawOval(465, 15, 15, 15);
 			g.drawOval(485, 15, 15, 15);
 			g.drawString("Difficulty", 405, 27);
-			
+
 		} else if (arrayObjectos(Vinte4.randNum).difficulty == 3) {
 			g.setColor(Color.WHITE);
-			Shape difficulty = new Ellipse2D.Double(mleft + 20, mtop + 20, 15, 15);
+			Shape difficulty = new Ellipse2D.Double(marginLeft + 20, marginTop + 20, 15, 15);
 			((Graphics2D) g).fill(difficulty);
-			
+
 			AffineTransform transform = new AffineTransform();
-			transform.setToTranslation(0,20);
+			transform.setToTranslation(0, 20);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(0,20);
+			transform.setToTranslation(0, 20);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(0,400);
+			transform.setToTranslation(0, 400);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(20,0);
+			transform.setToTranslation(20, 0);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(20,0);
+			transform.setToTranslation(20, 0);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(400,0);
+			transform.setToTranslation(400, 0);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(0,-20);
+			transform.setToTranslation(0, -20);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(0,-20);
+			transform.setToTranslation(0, -20);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(0,-400);
+			transform.setToTranslation(0, -400);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(-20,0);
+			transform.setToTranslation(-20, 0);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
-			transform.setToTranslation(-20,0);
+			transform.setToTranslation(-20, 0);
 			difficulty = transform.createTransformedShape(difficulty);
 			((Graphics2D) g).fill(difficulty);
 
-			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			Font font = new Font("Calibri", Font.PLAIN, 14);
 			g.setFont(font);
 			g.setColor(Color.BLACK);
@@ -589,55 +600,53 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 			g.drawOval(485, 15, 15, 15);
 			g.drawString("Difficulty", 385, 27);
 		}
+		// Boolean is24
 		Vinte4.is24 = arrayObjectos(Vinte4.randNum).pro_name;
-		
+
 		// FONT
-		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-		RenderingHints.VALUE_ANTIALIAS_ON);
+		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		Font font = new Font("Calibri", Font.PLAIN, 156);
 		g.setFont(font);
 		g.setColor(Color.BLACK);
-		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n1), mleft + 215,mtop + 150);
 
-		// 5
+		// TOP
+		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n1), marginLeft + 215, marginTop + 150);
+
+		// BOTTOM
+		AffineTransform backupFontRotation = ((Graphics2D) g).getTransform();
 		AffineTransform affineTransform = new AffineTransform();
-		affineTransform.rotate(Math.toRadians(180), mleft + 250, mtop + 250);
+		affineTransform.rotate(Math.toRadians(180), marginLeft + 250, marginTop + 250);
 		Font rotatedFont = font.deriveFont(affineTransform);
 		g.setFont(rotatedFont);
-		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n2), mleft + 215,mtop + 150);
+		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n2), marginLeft + 215, marginTop + 150);
 
-		// 4
-		AffineTransform affineTransform2 = new AffineTransform();
-		affineTransform2.rotate(Math.toRadians(90), mleft + 250, mtop + 250);
-		Font rotatedFont2 = font.deriveFont(affineTransform2);
+		// LEFT
+		affineTransform.rotate(Math.toRadians(90), marginLeft + 250, marginTop + 250);
+		Font rotatedFont2 = font.deriveFont(affineTransform);
 		g.setFont(rotatedFont2);
-		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n3), mleft + 215,mtop + 150);
+		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n3), marginLeft + 215, marginTop + 150);
 
-		// 1
-		AffineTransform affineTransform3 = new AffineTransform();
-		affineTransform3.rotate(Math.toRadians(-90), mleft + 250, mtop + 250);
-		Font rotatedFont3 = font.deriveFont(affineTransform3);
+		// RIGHT
+		affineTransform.rotate(Math.toRadians(-180), marginLeft + 250, marginTop + 250);
+		Font rotatedFont3 = font.deriveFont(affineTransform);
 		g.setFont(rotatedFont3);
-		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n4), mleft + 215,
-				mtop + 150);
+		g.drawString(String.valueOf(arrayObjectos(Vinte4.randNum).n4), marginLeft + 215, marginTop + 150);
 
-		if (a == null) {
-			g.drawImage(image2, 10, 560, null);
-		} else {
-			g.drawImage(PrintPanel.a, 10, 560, null);
-		}
+		((Graphics2D) g).setTransform(backupFontRotation);
+
 		
-		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		Font font2 = new Font("Calibri", Font.PLAIN, 14);
 
-		AffineTransform affineTransformResultado = new AffineTransform();
-		affineTransformResultado.rotate(Math.toRadians(0), mleft + 250, mtop + 250);
-		Font rotatedFontResultado = font2.deriveFont(affineTransformResultado);
-		g.setFont(rotatedFontResultado);
+		AffineTransform affineTransformResultFont = new AffineTransform();
+		Font resultFont = font2.deriveFont(affineTransformResultFont);
+		g.setFont(resultFont);
 		g.drawString("Puzzle " + arrayObjectos(Vinte4.randNum).game_id, 15, 27);
 		g.drawString("Score :" + Vinte4.totalCertas + "/" + Vinte4.totalRespondidas, 100, 27);
 		g.drawString("RIGHT: ", 265, 590);
 
+		
+		// Points GREEN/RED SQUARES
 		switch (Vinte4.totalCertas) {
 		case 1:
 			g.setColor(Color.GREEN);
@@ -847,4 +856,3 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 
 	}
 }
-
