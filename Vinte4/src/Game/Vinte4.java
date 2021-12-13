@@ -373,7 +373,6 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 		obj[24] = new Puzzle(24, 8, 5, 5, 2, true, 3);
 		obj[25] = new Puzzle(25, 3, 3, 6, 8, true, 3);
 		obj[26] = new Puzzle(26, 7, 5, 3, 3, true, 3);
-		
 		obj[27] = new Puzzle(15, 1, 1, 1, 1, false, 1);
 		obj[28] = new Puzzle(16, 1, 2, 3, 4, false, 2);
 		obj[29] = new Puzzle(17, 2, 1, 1, 1, false, 2);
@@ -530,7 +529,7 @@ class PrintPanel extends JPanel implements Printable, ActionListener  {
 		    difficulty = transform.createTransformedShape(difficulty);
 		    ((Graphics2D) g).fill(difficulty);
 		    transform.setToTranslation(-20,0);
-		    difficulty = transform.createTransformedShape(difficulty);
+		    difficulty = transform.createTransformedShape(difficulty);//
 		    ((Graphics2D) g).fill(difficulty);
 
 			((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
